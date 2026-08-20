@@ -11,10 +11,6 @@ interface ItemCardProps {
 }
 
 export function ItemCard({ item, index = 0 }: ItemCardProps) {
-  // Alternate photo tilt for scrapbook polaroid effect
-  const tiltClass =
-    index % 2 === 0 ? "scrapbook-photo-tilt-1" : "scrapbook-photo-tilt-2";
-
   const statusColors: Record<Item["status"], string> = {
     active: "bg-success-subtle text-success border-success/30",
     outgrown: "bg-warning-subtle text-warning border-warning/30",
@@ -35,14 +31,14 @@ export function ItemCard({ item, index = 0 }: ItemCardProps) {
       className="group block rounded-2xl bg-surface border border-border p-4 scrapbook-card transition-all duration-300 relative overflow-hidden flex flex-col justify-between"
     >
       <div>
-        {/* Photo Container styled like a Scrapbook Polaroid */}
+        {/* Photo Container */}
         <div className="relative w-full aspect-[4/3] rounded-xl overflow-hidden bg-surface-raised mb-4 border border-border">
           {item.photos && item.photos.length > 0 ? (
             // eslint-disable-next-next/no-img-element
             <img
               src={item.photos[0]}
               alt={item.name}
-              className={`w-full h-full object-cover transition-transform duration-500 group-hover:scale-105 ${tiltClass}`}
+              className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center text-foreground-subtle">

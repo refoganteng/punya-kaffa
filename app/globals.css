@@ -245,14 +245,6 @@ body {
   box-shadow: 0 8px 20px oklch(0% 0 0 / 0.08);
 }
 
-.scrapbook-photo-tilt-1 {
-  transform: rotate(-1deg);
-}
-
-.scrapbook-photo-tilt-2 {
-  transform: rotate(1deg);
-}
-
 .scrapbook-font-display {
   font-family: var(--font-display);
 }
