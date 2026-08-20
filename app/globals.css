@@ -1,0 +1,258 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ── Base Variables (Light Mode Default) ──
+   05. Teal (#0F766E) + Coral (#FF7F50) + Sand (#F5E6CA)
+*/
+:root {
+  /* Typography */
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-sans:    "Plus Jakarta Sans", system-ui, sans-serif;
+  --font-mono:    "JetBrains Mono", monospace;
+
+  /* Backgrounds: Warm Soft Sand Canvas */
+  --background:             oklch(97.5% 0.015 75);  /* soft sand warm background */
+  --surface:                oklch(99.5% 0.005 75);  /* crisp clean surface card */
+  --surface-raised:         oklch(93.5% 0.028 75);  /* elevated / sand pill */
+  --overlay:                oklch(20% 0.02 192 / 50%);
+
+  /* Foregrounds / Typography */
+  --foreground:             oklch(22% 0.028 192);   /* deep dark pine/teal-slate */
+  --foreground-muted:       oklch(48% 0.025 192);   /* medium slate-teal */
+  --foreground-subtle:      oklch(68% 0.020 192);   /* placeholder / subtle */
+
+  /* Brand Primary: Teal (#0F766E) */
+  --primary:                oklch(47.5% 0.105 192); /* #0F766E */
+  --primary-hover:          oklch(41% 0.105 192);
+  --primary-subtle:         oklch(94% 0.040 192);   /* #CCFBF1 tint */
+  --primary-foreground:     oklch(99% 0 0);
+
+  /* Brand Secondary: Coral (#FF7F50) */
+  --secondary:              oklch(68% 0.180 42);    /* #FF7F50 */
+  --secondary-hover:        oklch(62% 0.180 42);
+  --secondary-subtle:       oklch(95.5% 0.038 42);  /* pale coral tint */
+  --secondary-foreground:   oklch(99% 0 0);
+
+  /* Brand Accent: Sand (#F5E6CA) */
+  --sand:                   oklch(92% 0.035 80);    /* #F5E6CA */
+  --sand-subtle:            oklch(96% 0.020 80);
+  --sand-foreground:        oklch(25% 0.030 75);
+
+  /* Semantic Feedback */
+  --success:                oklch(52% 0.120 165);
+  --success-subtle:         oklch(94% 0.040 165);
+  --warning:                oklch(72% 0.160 65);
+  --warning-subtle:         oklch(95% 0.040 65);
+  --danger:                 oklch(58% 0.200 22);
+  --danger-subtle:          oklch(95% 0.040 22);
+
+  /* Borders & Focus Ring */
+  --border:                 oklch(89% 0.018 75);    /* soft sand border */
+  --border-strong:          oklch(78% 0.025 75);
+  --ring:                   oklch(47.5% 0.105 192); /* Teal focus ring */
+
+  --stamp:                  oklch(47.5% 0.105 192 / 12%);
+
+  /* shadcn UI CSS Variables */
+  --card:                   var(--surface);
+  --card-foreground:        var(--foreground);
+  --popover:                var(--surface);
+  --popover-foreground:     var(--foreground);
+  --muted:                  var(--surface-raised);
+  --muted-foreground:       var(--foreground-muted);
+  --accent:                 var(--primary-subtle);
+  --accent-foreground:      var(--primary);
+  --destructive:            var(--danger);
+  --input:                  var(--border);
+  --radius:                 0.75rem;
+}
+
+/* ── Dark Mode Overrides (Deep Pine-Teal Canvas + Luminous Coral/Teal Accents) ── */
+.dark,
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background:             oklch(14% 0.025 192);  /* deep midnight teal */
+    --surface:                oklch(19% 0.030 192);  /* deep charcoal teal card */
+    --surface-raised:         oklch(25% 0.035 192);  /* elevated surface */
+    --overlay:                oklch(5% 0.01 192 / 60%);
+
+    --foreground:             oklch(95% 0.015 192);  /* bright crisp text */
+    --foreground-muted:       oklch(70% 0.020 192);  /* muted text */
+    --foreground-subtle:      oklch(50% 0.020 192);
+
+    /* Primary Teal in Dark (Luminous) */
+    --primary:                oklch(68% 0.120 188);  /* vibrant teal */
+    --primary-hover:          oklch(74% 0.120 188);
+    --primary-subtle:         oklch(26% 0.050 188);
+    --primary-foreground:     oklch(12% 0.030 192);
+
+    /* Secondary Coral in Dark */
+    --secondary:              oklch(72% 0.160 42);   /* bright coral */
+    --secondary-hover:        oklch(77% 0.150 42);
+    --secondary-subtle:       oklch(28% 0.060 42);
+    --secondary-foreground:   oklch(14% 0.020 42);
+
+    /* Sand in Dark */
+    --sand:                   oklch(86% 0.040 80);
+    --sand-subtle:            oklch(26% 0.035 80);
+    --sand-foreground:        oklch(96% 0.010 80);
+
+    --success:                oklch(66% 0.120 165);
+    --success-subtle:         oklch(24% 0.050 165);
+    --warning:                oklch(76% 0.140 65);
+    --warning-subtle:         oklch(26% 0.050 65);
+    --danger:                 oklch(66% 0.180 22);
+    --danger-subtle:          oklch(24% 0.060 22);
+
+    --border:                 oklch(26% 0.025 192);  /* deep teal border */
+    --border-strong:          oklch(36% 0.030 192);
+    --ring:                   oklch(68% 0.120 188);
+
+    --stamp:                  oklch(68% 0.120 188 / 10%);
+  }
+}
+
+/* Explicit class override for next-themes */
+.dark {
+  --background:             oklch(14% 0.025 192);
+  --surface:                oklch(19% 0.030 192);
+  --surface-raised:         oklch(25% 0.035 192);
+  --overlay:                oklch(5% 0.01 192 / 60%);
+
+  --foreground:             oklch(95% 0.015 192);
+  --foreground-muted:       oklch(70% 0.020 192);
+  --foreground-subtle:      oklch(50% 0.020 192);
+
+  --primary:                oklch(68% 0.120 188);
+  --primary-hover:          oklch(74% 0.120 188);
+  --primary-subtle:         oklch(26% 0.050 188);
+  --primary-foreground:     oklch(12% 0.030 192);
+
+  --secondary:              oklch(72% 0.160 42);
+  --secondary-hover:        oklch(77% 0.150 42);
+  --secondary-subtle:       oklch(28% 0.060 42);
+  --secondary-foreground:   oklch(14% 0.020 42);
+
+  --sand:                   oklch(86% 0.040 80);
+  --sand-subtle:            oklch(26% 0.035 80);
+  --sand-foreground:        oklch(96% 0.010 80);
+
+  --success:                oklch(66% 0.120 165);
+  --success-subtle:         oklch(24% 0.050 165);
+  --warning:                oklch(76% 0.140 65);
+  --warning-subtle:         oklch(26% 0.050 65);
+  --danger:                 oklch(66% 0.180 22);
+  --danger-subtle:          oklch(24% 0.060 22);
+
+  --border:                 oklch(26% 0.025 192);
+  --border-strong:          oklch(36% 0.030 192);
+  --ring:                   oklch(68% 0.120 188);
+
+  --stamp:                  oklch(68% 0.120 188 / 10%);
+}
+
+.light {
+  --background:             oklch(97.5% 0.015 75);
+  --surface:                oklch(99.5% 0.005 75);
+  --surface-raised:         oklch(93.5% 0.028 75);
+  --overlay:                oklch(20% 0.02 192 / 50%);
+
+  --foreground:             oklch(22% 0.028 192);
+  --foreground-muted:       oklch(48% 0.025 192);
+  --foreground-subtle:      oklch(68% 0.020 192);
+
+  --primary:                oklch(47.5% 0.105 192);
+  --primary-hover:          oklch(41% 0.105 192);
+  --primary-subtle:         oklch(94% 0.040 192);
+  --primary-foreground:     oklch(99% 0 0);
+
+  --secondary:              oklch(68% 0.180 42);
+  --secondary-hover:        oklch(62% 0.180 42);
+  --secondary-subtle:       oklch(95.5% 0.038 42);
+  --secondary-foreground:   oklch(99% 0 0);
+
+  --sand:                   oklch(92% 0.035 80);
+  --sand-subtle:            oklch(96% 0.020 80);
+  --sand-foreground:        oklch(25% 0.030 75);
+
+  --border:                 oklch(89% 0.018 75);
+  --border-strong:          oklch(78% 0.025 75);
+  --ring:                   oklch(47.5% 0.105 192);
+}
+
+/* ── Bind Tailwind v4 @theme inline to dynamic CSS Custom Properties ── */
+@theme inline {
+  --font-display: var(--font-display);
+  --font-sans:    var(--font-sans);
+  --font-mono:    var(--font-mono);
+
+  --color-background:        var(--background);
+  --color-surface:           var(--surface);
+  --color-surface-raised:    var(--surface-raised);
+  --color-overlay:           var(--overlay);
+
+  --color-foreground:        var(--foreground);
+  --color-foreground-muted:  var(--foreground-muted);
+  --color-foreground-subtle: var(--foreground-subtle);
+
+  --color-primary:           var(--primary);
+  --color-primary-hover:     var(--primary-hover);
+  --color-primary-subtle:    var(--primary-subtle);
+  --color-primary-foreground: var(--primary-foreground);
+
+  --color-secondary:          var(--secondary);
+  --color-secondary-hover:    var(--secondary-hover);
+  --color-secondary-subtle:   var(--secondary-subtle);
+  --color-secondary-foreground: var(--secondary-foreground);
+
+  --color-coral:              var(--secondary);
+  --color-coral-hover:        var(--secondary-hover);
+  --color-coral-subtle:       var(--secondary-subtle);
+  --color-coral-foreground:   var(--secondary-foreground);
+
+  --color-sand:               var(--sand);
+  --color-sand-subtle:        var(--sand-subtle);
+  --color-sand-foreground:    var(--sand-foreground);
+
+  --color-success:            var(--success);
+  --color-success-subtle:     var(--success-subtle);
+  --color-warning:            var(--warning);
+  --color-warning-subtle:     var(--warning-subtle);
+  --color-danger:             var(--danger);
+  --color-danger-subtle:      var(--danger-subtle);
+
+  --color-border:             var(--border);
+  --color-border-strong:      var(--border-strong);
+  --color-ring:               var(--ring);
+  --color-stamp:              var(--stamp);
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+}
+
+/* Custom Scrapbook Styling */
+.scrapbook-card {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 2px 8px oklch(0% 0 0 / 0.04);
+}
+
+.scrapbook-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px oklch(0% 0 0 / 0.08);
+}
+
+.scrapbook-photo-tilt-1 {
+  transform: rotate(-1deg);
+}
+
+.scrapbook-photo-tilt-2 {
+  transform: rotate(1deg);
+}
+
+.scrapbook-font-display {
+  font-family: var(--font-display);
+}

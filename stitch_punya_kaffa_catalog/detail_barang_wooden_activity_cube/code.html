@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Item Detail - Punya Kaffa</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&amp;family=Playfair+Display:wght@600;700&amp;family=Plus+Jakarta+Sans:wght@400;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration (Design System) -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "secondary-fixed": "#a7edff",
+                    "error-container": "#ffdad6",
+                    "inverse-primary": "#ffb4a3",
+                    "on-tertiary-fixed-variant": "#005048",
+                    "on-primary": "#ffffff",
+                    "on-tertiary-container": "#f4fffb",
+                    "surface": "#fff8f6",
+                    "surface-bright": "#fff8f6",
+                    "primary-fixed": "#ffdad2",
+                    "on-error": "#ffffff",
+                    "surface-container-high": "#f7e4e0",
+                    "on-background": "#231917",
+                    "tertiary-fixed": "#8ef4e4",
+                    "on-secondary": "#ffffff",
+                    "inverse-surface": "#392e2b",
+                    "primary-fixed-dim": "#ffb4a3",
+                    "primary": "#99402b",
+                    "on-primary-container": "#fffbff",
+                    "on-tertiary-fixed": "#00201c",
+                    "surface-dim": "#e8d6d2",
+                    "surface-variant": "#f1dfda",
+                    "on-secondary-fixed": "#001f25",
+                    "surface-tint": "#9c422d",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface-variant": "#56423e",
+                    "on-primary-fixed": "#3d0600",
+                    "surface-container-highest": "#f1dfda",
+                    "tertiary-fixed-dim": "#72d8c8",
+                    "surface-container": "#fdeae6",
+                    "on-error-container": "#93000a",
+                    "tertiary-container": "#008376",
+                    "tertiary": "#00685e",
+                    "secondary": "#006878",
+                    "outline-variant": "#dcc0ba",
+                    "error": "#ba1a1a",
+                    "surface-container-low": "#fff0ed",
+                    "background": "#fff8f6",
+                    "outline": "#89726d",
+                    "on-surface": "#231917",
+                    "inverse-on-surface": "#ffede9",
+                    "secondary-fixed-dim": "#85d2e4",
+                    "primary-container": "#b95841",
+                    "on-secondary-fixed-variant": "#004e5b",
+                    "on-tertiary": "#ffffff",
+                    "on-primary-fixed-variant": "#7d2c19",
+                    "secondary-container": "#9eebfe",
+                    "on-secondary-container": "#0a6c7d"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "lg": "2.5rem",
+                    "xl": "4rem",
+                    "margin-mobile": "1rem",
+                    "xs": "0.5rem",
+                    "margin-desktop": "2.5rem",
+                    "sm": "1rem",
+                    "md": "1.5rem",
+                    "gutter": "1.5rem",
+                    "base": "4px"
+            },
+            "fontFamily": {
+                    "h3": ["Playfair Display"],
+                    "label": ["Plus Jakarta Sans"],
+                    "h1-mobile": ["Playfair Display"],
+                    "body-lg": ["Plus Jakarta Sans"],
+                    "body-md": ["Plus Jakarta Sans"],
+                    "h1": ["Playfair Display"],
+                    "metadata": ["JetBrains Mono"],
+                    "h2": ["Playfair Display"]
+            },
+            "fontSize": {
+                    "h3": ["24px", {"lineHeight": "1.3", "fontWeight": "600"}],
+                    "label": ["14px", {"lineHeight": "1.2", "fontWeight": "600"}],
+                    "h1-mobile": ["32px", {"lineHeight": "1.2", "fontWeight": "700"}],
+                    "body-lg": ["18px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "body-md": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}],
+                    "h1": ["48px", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "metadata": ["13px", {"lineHeight": "1.4", "letterSpacing": "0.02em", "fontWeight": "500"}],
+                    "h2": ["32px", {"lineHeight": "1.2", "fontWeight": "600"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Custom Utilities for Scrapbook Aesthetic */
+        .tape-effect {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            width: 100px;
+            height: 24px;
+            background-color: rgba(241, 223, 218, 0.7); /* surface-variant */
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+            z-index: 10;
+        }
+        .photo-card {
+            background: #fff8f6; /* surface */
+            padding: 8px 8px 32px 8px;
+            border: 1px solid rgba(153, 64, 43, 0.1); /* primary at 10% */
+            box-shadow: 0 2px 8px -2px rgba(35, 25, 23, 0.05); /* very soft shadow */
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen pb-safe antialiased">
+<!-- TopAppBar (Detail Context) -->
+<header class="bg-background/80 backdrop-blur-md full-width top-0 sticky z-50 flex justify-between items-center w-full px-margin-mobile h-16 transition-all duration-200 shadow-sm md:shadow-none border-b border-primary/5 md:border-transparent">
+<button class="p-2 text-on-surface hover:bg-surface-variant/20 rounded-full transition-colors active:scale-95 flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">arrow_back</span>
+</button>
+<div class="font-h1-mobile text-h1-mobile md:font-h1 md:text-h1 text-primary text-center hidden md:block">
+            Detail Item
+        </div>
+<button class="p-2 text-primary hover:bg-surface-variant/20 rounded-full transition-colors active:scale-95 flex items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 0;">edit</span>
+</button>
+</header>
+<!-- Main Content -->
+<main class="max-w-6xl mx-auto px-margin-mobile md:px-margin-desktop py-lg pb-32 md:pb-lg grid grid-cols-1 md:grid-cols-12 gap-xl items-start">
+<!-- Left Column: Image Gallery (Scrapbook Style) -->
+<div class="md:col-span-5 flex flex-col gap-md relative">
+<!-- Main Featured Image -->
+<div class="relative w-full aspect-[2/3] photo-card -rotate-1 mx-auto max-w-[400px] md:max-w-full group">
+<div class="tape-effect"></div>
+<img class="w-full h-full object-cover rounded-sm group-hover:scale-[1.01] transition-transform duration-500 ease-out" data-alt="A beautifully crafted wooden activity cube for toddlers, photographed in a warm, sunlit nursery. The toy features brightly colored wooden beads on wire mazes, shape sorting slots, and spinning gears. The aesthetic is soft minimalist with a nostalgic scrapbook feel, utilizing a warm off-white and earthy color palette. The lighting is soft and natural, casting gentle shadows that emphasize the tactile, high-quality natural materials." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDOErdhVyUvIKqh2rGUTj-7GJEgiP4QrGsStbksG_yOTlLRnXFyHBV7hfLF-prKlM2fu6-0960c-YFKQWdYIuoZ8A5n-6MNUBnIRlFx-FvgcglliDeph-J_oPFhe-2qb11tij1bwv0VBVarOm5UHdMKV4QyD0nQFUcA2BaqnXmyf5rH1bTQEgVrRs9-v4BpUDrjcDt3ODvjZmX75_1rTa4riBt67uCshYzW_3YRHNSWIEMI6M4Gi6oa"/>
+</div>
+<!-- Thumbnail Carousel -->
+<div class="flex overflow-x-auto gap-sm py-2 px-1 hide-scrollbar">
+<div class="w-20 h-24 flex-shrink-0 photo-card rotate-2 cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="Close up detail of a wooden activity cube showing a bright yellow gear and a red wooden bead on a curved wire, soft natural lighting, warm cozy vibe, tactile aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjz-asExzVapijtJVv98w6LHjfDNXhq-9cpN-Zoewh7NOu-BJtjhVkIKzcMUh_M9uTRqv1YFA1U1Uiq98mPYe2NSmrZ3emrtZegn_hm8zq7WZswKVqskBI5J_7_8r2t3K1shYrUna4sZxDIQSRf4N0dJMzYUuWEfblVZkZYjpn9HZosNJZzxGr0gSnofruvqsr364WMhPc6wvvBvRYC2rKw5jukPNX6VhEsT-sVn1HQS4uxqs8s-HL"/>
+</div>
+<div class="w-20 h-24 flex-shrink-0 photo-card -rotate-1 cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="Side view of a wooden activity cube displaying shape sorter cutouts like stars, squares and triangles, resting on a soft textured cream rug, nostalgic warm photography." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWshXY87Hlh75KV9e9uGqWl0cqsi4bc5s38-226tKa15_g-IOsTxzWkiSUBP8npuJq9LO8Ag8kAdkwd6oSSSEWl7rgpJaZCvk8z_WX1ZJonapWCvwm7M6BYCOjBoiwQT9hOFhmR3sKY2VwOMa205OV1pakwPUGvQ4Nh4fq0vOnrcuoqQAdPpVjWiaMm0FvpqCeaThGiBr6f5K_zFXN7W3qsOR4ugzbtTGS_5g7RGn5mzOuUd7oEGXm"/>
+</div>
+<div class="w-20 h-24 flex-shrink-0 photo-card rotate-1 cursor-pointer">
+<img class="w-full h-full object-cover" data-alt="Top-down view of the wire maze section of a toddler's wooden activity cube, vibrant colors against natural wood grain, soft minimalist aesthetic with shallow depth of field." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCllh_HzI2IsmR0MuE-ZUMrUY-73cXruRrbIIhALKzfqp0bRE09fWwHAhyqu-Ax7OphyEN5uuMf92dmNIWXqZujn2EhT08KbO3RrdND45TgUErGwyd6VxQ9crMn6UIFqiLIi4zlS0QcjsZooIxNoXcqi41sY74QOjWVDHcZ0RP1Lz1ZlOBWWvCjYZ9rEXegdf3Uh1iXMCw-dxfXMxNETdAjHW5LBUBECXWVJG3w0bvhorW2qPlrrnE9"/>
+</div>
+</div>
+</div>
+<!-- Right Column: Details & Reviews -->
+<div class="md:col-span-7 flex flex-col gap-lg">
+<!-- Header Section -->
+<div class="flex flex-col gap-xs">
+<div class="flex justify-between items-start">
+<div>
+<h1 class="font-h2 text-h2 text-primary">Wooden Activity Cube</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-1">Little Dutch</p>
+</div>
+<span class="bg-primary-container text-on-primary-container font-label text-label px-3 py-1 rounded-full shadow-sm">
+                        Active
+                    </span>
+</div>
+<!-- Tags -->
+<div class="flex flex-wrap gap-2 mt-4">
+<span class="bg-secondary/10 text-secondary font-label text-label px-3 py-1 rounded-full">#favorite</span>
+<span class="bg-secondary/10 text-secondary font-label text-label px-3 py-1 rounded-full">#edukatif</span>
+<span class="bg-secondary/10 text-secondary font-label text-label px-3 py-1 rounded-full">#motorik</span>
+</div>
+</div>
+<!-- Metadata Section (JetBrains Mono) -->
+<div class="grid grid-cols-2 md:grid-cols-3 gap-sm py-md border-y border-outline-variant/30">
+<div class="flex flex-col gap-1">
+<span class="font-label text-label text-outline text-[11px] uppercase tracking-wider">Acquired</span>
+<span class="font-metadata text-metadata text-on-surface-variant">12 Oct 2023</span>
+</div>
+<div class="flex flex-col gap-1">
+<span class="font-label text-label text-outline text-[11px] uppercase tracking-wider">Price</span>
+<span class="font-metadata text-metadata text-on-surface-variant">Rp 450.000</span>
+</div>
+<div class="flex flex-col gap-1 col-span-2 md:col-span-1">
+<span class="font-label text-label text-outline text-[11px] uppercase tracking-wider">Source</span>
+<span class="font-metadata text-metadata text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">storefront</span> Tokopedia
+                    </span>
+</div>
+</div>
+<!-- Description (Optional, added for visual balance) -->
+<div class="font-body-md text-body-md text-on-surface-variant leading-relaxed">
+                Mainan edukasi yang sangat disukai Kaffa sejak usia 10 bulan. Membantu melatih motorik halus dan koordinasi mata-tangan. Kualitas kayu sangat bagus dan aman karena menggunakan cat water-based.
+            </div>
+<!-- Family Reviews -->
+<div class="flex flex-col gap-sm mt-4">
+<h3 class="font-h3 text-h3 text-on-surface mb-2 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">diversity_1</span> Family Reviews
+                </h3>
+<!-- Ibu's Review -->
+<div class="bg-surface border border-outline-variant/40 rounded-lg p-md flex flex-col gap-sm relative overflow-hidden transform hover:-translate-y-1 transition-transform duration-200">
+<div class="absolute top-0 right-0 w-16 h-16 bg-surface-container-high rounded-bl-full -z-0 opacity-50"></div>
+<div class="flex justify-between items-start relative z-10">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-secondary-container text-on-secondary-container flex items-center justify-center font-h3 text-[14px]">I</div>
+<span class="font-label text-label text-on-surface">Ibu</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container py-1 px-2 rounded-md">
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-metadata text-metadata text-on-surface font-bold">10/10</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant relative z-10 italic">
+                        "Investasi mainan terbaik sejauh ini! Kaffa bisa betah main sendiri lumayan lama. Desainnya juga estetik buat ditaruh di ruang tengah."
+                    </p>
+<div class="flex items-center gap-2 mt-1 relative z-10">
+<span class="material-symbols-outlined text-tertiary text-[16px]">thumb_up</span>
+<span class="font-metadata text-metadata text-tertiary text-[12px]">Would buy again</span>
+</div>
+</div>
+<!-- Ayah's Review -->
+<div class="bg-surface border border-outline-variant/40 rounded-lg p-md flex flex-col gap-sm relative overflow-hidden transform hover:-translate-y-1 transition-transform duration-200">
+<div class="flex justify-between items-start relative z-10">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-surface-tint text-on-primary flex items-center justify-center font-h3 text-[14px]">A</div>
+<span class="font-label text-label text-on-surface">Ayah</span>
+</div>
+<div class="flex items-center gap-1 bg-surface-container py-1 px-2 rounded-md">
+<span class="material-symbols-outlined text-primary text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-metadata text-metadata text-on-surface font-bold">9/10</span>
+</div>
+</div>
+<p class="font-body-md text-body-md text-on-surface-variant relative z-10 italic">
+                        "Solid banget kayunya. Sempat jatuh beberapa kali tapi nggak lecet parah. Kaffa paling suka bagian roda gigi di samping."
+                    </p>
+<div class="flex items-center gap-2 mt-1 relative z-10">
+<span class="material-symbols-outlined text-tertiary text-[16px]">thumb_up</span>
+<span class="font-metadata text-metadata text-tertiary text-[12px]">Would buy again</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Mobile Only) - Translating JSON closely -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 pb-safe bg-surface border-t border-primary/10 shadow-lg rounded-t-xl md:hidden">
+<!-- Tab 1: Catalog (Active for Detail View) -->
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-full px-4 py-1 scale-97 transition-transform duration-150 group" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">auto_stories</span>
+<span class="font-label text-label text-[10px] mt-1">Catalog</span>
+</a>
+<!-- Tab 2: Timeline -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-primary/5 transition-all duration-150 rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:-translate-y-1 transition-transform duration-200">timeline</span>
+<span class="font-label text-label text-[10px] mt-1">Timeline</span>
+</a>
+<!-- Tab 3: Wishlist -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-primary/5 transition-all duration-150 rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:-translate-y-1 transition-transform duration-200">favorite</span>
+<span class="font-label text-label text-[10px] mt-1">Wishlist</span>
+</a>
+<!-- Tab 4: Add Item -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-2 hover:bg-primary/5 transition-all duration-150 rounded-lg group" href="#">
+<span class="material-symbols-outlined group-hover:-translate-y-1 transition-transform duration-200">add_circle</span>
+<span class="font-label text-label text-[10px] mt-1">Add Item</span>
+</a>
+</nav>
+</body></html>

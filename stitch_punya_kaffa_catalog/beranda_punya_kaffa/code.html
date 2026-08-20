@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Punya Kaffa</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&amp;family=JetBrains+Mono:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "secondary-fixed": "#a7edff",
+                      "error-container": "#ffdad6",
+                      "inverse-primary": "#ffb4a3",
+                      "on-tertiary-fixed-variant": "#005048",
+                      "on-primary": "#ffffff",
+                      "on-tertiary-container": "#f4fffb",
+                      "surface": "#fff8f6",
+                      "surface-bright": "#fff8f6",
+                      "primary-fixed": "#ffdad2",
+                      "on-error": "#ffffff",
+                      "surface-container-high": "#f7e4e0",
+                      "on-background": "#231917",
+                      "tertiary-fixed": "#8ef4e4",
+                      "on-secondary": "#ffffff",
+                      "inverse-surface": "#392e2b",
+                      "primary-fixed-dim": "#ffb4a3",
+                      "primary": "#99402b",
+                      "on-primary-container": "#fffbff",
+                      "on-tertiary-fixed": "#00201c",
+                      "surface-dim": "#e8d6d2",
+                      "surface-variant": "#f1dfda",
+                      "on-secondary-fixed": "#001f25",
+                      "surface-tint": "#9c422d",
+                      "surface-container-lowest": "#ffffff",
+                      "on-surface-variant": "#56423e",
+                      "on-primary-fixed": "#3d0600",
+                      "surface-container-highest": "#f1dfda",
+                      "tertiary-fixed-dim": "#72d8c8",
+                      "surface-container": "#fdeae6",
+                      "on-error-container": "#93000a",
+                      "tertiary-container": "#008376",
+                      "tertiary": "#00685e",
+                      "secondary": "#006878",
+                      "outline-variant": "#dcc0ba",
+                      "error": "#ba1a1a",
+                      "surface-container-low": "#fff0ed",
+                      "background": "#fff8f6",
+                      "outline": "#89726d",
+                      "on-surface": "#231917",
+                      "inverse-on-surface": "#ffede9",
+                      "secondary-fixed-dim": "#85d2e4",
+                      "primary-container": "#b95841",
+                      "on-secondary-fixed-variant": "#004e5b",
+                      "on-tertiary": "#ffffff",
+                      "on-primary-fixed-variant": "#7d2c19",
+                      "secondary-container": "#9eebfe",
+                      "on-secondary-container": "#0a6c7d"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "lg": "2.5rem",
+                      "xl": "4rem",
+                      "margin-mobile": "1rem",
+                      "xs": "0.5rem",
+                      "margin-desktop": "2.5rem",
+                      "sm": "1rem",
+                      "md": "1.5rem",
+                      "gutter": "1.5rem",
+                      "base": "4px"
+              },
+              "fontFamily": {
+                      "h3": [
+                              "Playfair Display"
+                      ],
+                      "label": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "h1-mobile": [
+                              "Playfair Display"
+                      ],
+                      "body-lg": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "body-md": [
+                              "Plus Jakarta Sans"
+                      ],
+                      "h1": [
+                              "Playfair Display"
+                      ],
+                      "metadata": [
+                              "JetBrains Mono"
+                      ],
+                      "h2": [
+                              "Playfair Display"
+                      ]
+              },
+              "fontSize": {
+                      "h3": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "label": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "h1-mobile": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "h1": [
+                              "48px",
+                              {
+                                      "lineHeight": "1.1",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "metadata": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "letterSpacing": "0.02em",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "h2": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "600"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        .scrapbook-card {
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid rgba(153, 64, 43, 0.1);
+        }
+        .washi-tape {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%) rotate(-2deg);
+            width: 80px;
+            height: 25px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(0,0,0,0.05);
+            z-index: 10;
+            box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+        }
+        .masonry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-gap: 1.5rem;
+            align-items: start;
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background antialiased min-h-screen pb-24 selection:bg-primary-container selection:text-on-primary-container">
+<header class="hidden md:flex bg-background/80 dark:bg-background/80 backdrop-blur-md font-h1-mobile text-h1-mobile docked full-width top-0 sticky z-50 flat no shadows flex justify-between items-center w-full px-margin-mobile h-16">
+<div class="flex items-center gap-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-primary" data-icon="palette">palette</span>
+<span class="font-h1-mobile text-h1-mobile text-primary dark:text-primary-fixed-dim font-bold tracking-tight">Punya Kaffa</span>
+</div>
+<nav class="flex gap-lg items-center">
+<a class="font-label text-label text-primary font-bold hover:bg-surface-variant/20 px-4 py-2 rounded-full transition-colors flex flex-col items-center" href="#">
+                 Catalog
+                 <span class="w-1 h-1 bg-primary rounded-full mt-1"></span>
+</a>
+<a class="font-label text-label text-on-surface-variant hover:bg-surface-variant/20 px-4 py-2 rounded-full transition-colors flex flex-col items-center" href="#">
+                 Timeline
+             </a>
+<a class="font-label text-label text-on-surface-variant hover:bg-surface-variant/20 px-4 py-2 rounded-full transition-colors flex flex-col items-center" href="#">
+                 Wishlist
+             </a>
+<a class="font-label text-label text-on-surface-variant hover:bg-surface-variant/20 px-4 py-2 rounded-full transition-colors flex flex-col items-center" href="#">
+                 Add Item
+             </a>
+</nav>
+<div class="flex items-center">
+<span class="material-symbols-outlined text-on-surface-variant p-2 hover:bg-surface-variant/20 rounded-full cursor-pointer transition-colors" data-icon="account_circle">account_circle</span>
+</div>
+</header>
+<main class="w-full max-w-7xl mx-auto px-margin-mobile md:px-margin-desktop pt-lg pb-xl flex flex-col gap-xl">
+<section class="flex flex-col gap-md text-center py-xl bg-surface-container-low rounded-xl relative overflow-hidden">
+<div class="absolute inset-0 opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 50% 50%, var(--tw-colors-primary-container) 1px, transparent 1px); background-size: 20px 20px;"></div>
+<h1 class="font-h1 text-h1 text-primary relative z-10">Curated Nostalgia</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mx-auto relative z-10">A digital scrapbook of tactile memories, curated collections, and Kaffa-approved items.</p>
+<div class="flex justify-center gap-lg mt-md relative z-10 flex-wrap">
+<div class="bg-surface scrapbook-card px-md py-sm rounded-lg flex flex-col items-center min-w-[120px] transform rotate-1 hover:rotate-0 transition-transform cursor-pointer">
+<span class="font-metadata text-metadata text-secondary mb-1 uppercase tracking-wider">Total Items</span>
+<span class="font-h2 text-h2 text-primary">142</span>
+</div>
+<div class="bg-surface scrapbook-card px-md py-sm rounded-lg flex flex-col items-center min-w-[120px] transform -rotate-2 hover:rotate-0 transition-transform cursor-pointer">
+<span class="font-metadata text-metadata text-secondary mb-1 uppercase tracking-wider">Recently Added</span>
+<span class="font-h2 text-h2 text-primary">12</span>
+</div>
+<div class="bg-surface scrapbook-card px-md py-sm rounded-lg flex flex-col items-center min-w-[120px] transform rotate-1 hover:rotate-0 transition-transform cursor-pointer">
+<span class="font-metadata text-metadata text-secondary mb-1 uppercase tracking-wider">Favorites</span>
+<span class="font-h2 text-h2 text-primary">38</span>
+</div>
+</div>
+</section>
+<section class="flex flex-col gap-md">
+<div class="flex items-end justify-between border-b border-primary/20 pb-sm">
+<h2 class="font-h2 text-h2 text-primary">Kaffa Approved</h2>
+<a class="font-label text-label text-secondary hover:underline flex items-center gap-1" href="#">
+                    View All <span aria-hidden="true" class="material-symbols-outlined text-[18px]" data-icon="arrow_forward">arrow_forward</span>
+</a>
+</div>
+<div class="masonry-grid mt-sm">
+<article class="bg-surface scrapbook-card p-3 rounded-md relative transform -rotate-1 hover:scale-[1.02] transition-transform duration-300">
+<div class="washi-tape"></div>
+<div class="aspect-square w-full mb-3 overflow-hidden rounded border-2 border-white shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="A vintage 1970s film camera resting on a wooden table beside a stack of old Polaroid photos. The lighting is warm and natural, casting soft shadows that highlight the tactile textures of the metal camera body and the worn paper edges. The color palette features rich earthy browns, deep blacks, and soft creamy whites, creating a deeply nostalgic and cozy light-mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeuvzAnsxRxnbDT8nZ_XkFEQ7nVakJ9pa8WXCZcY7kU1tgbN4zuiuT28LW1yGZdPDXvFgPeWAUarBl_ypNgZXHK4hlNp89t0dHfbw8TYimZk8ZTNgXgfl983gWazT-pH5HX2rJd5eH7blywp_qEryBP9zM3ODCApxqrLd6U_gLg40V3922qirogw59EpIw1rdXnwGIeTiguRm_0VpplbcAwi2XAcwzLu41RIcOSaTbheZkpY4-6d1r"/>
+<div class="absolute top-2 right-2 bg-secondary/10 backdrop-blur-sm px-2 py-1 rounded-full border border-secondary/20 flex items-center gap-1">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[14px]" data-icon="verified" data-weight="fill">verified</span>
+<span class="font-metadata text-[10px] text-secondary font-bold">APPROVED</span>
+</div>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Vintage Rangefinder</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">Perfect for capturing imperfect moments. The mechanical click is immensely satisfying.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="bg-surface-variant text-on-surface-variant font-metadata text-[11px] px-2 py-1 rounded-sm">Hardware</span>
+<span class="font-metadata text-metadata text-primary opacity-70">Added Oct 24</span>
+</div>
+</article>
+<article class="bg-surface scrapbook-card p-3 rounded-md relative transform rotate-1 hover:scale-[1.02] transition-transform duration-300">
+<div class="washi-tape" style="transform: translateX(-50%) rotate(3deg);"></div>
+<div class="aspect-[4/3] w-full mb-3 overflow-hidden rounded border-2 border-white shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="A beautifully bound leather journal lying open on a textured linen tablecloth, showing handwritten notes in sepia ink. Next to it rests a heavy brass fountain pen. Soft, golden hour light spills across the scene, highlighting the grain of the leather and the weave of the linen. The palette is dominated by warm ochres, deep browns, and soft ivory, conveying a sense of heritage and personal reflection." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBioIcwXs_J5Gu_JjyEg7ew-ZChnnWeaxsqOwgjqEDi-O3M3iYFFtltXs__ri5PiBSRO9Lq3182PSaNVk79rmtKhn-4orkmBvlkcNai5_ydg6chwm-kcCL-iVOor7H-91Jm3G9nlrmYhN0Py7RDlmKqYod1lNw6XD4FSnuaAdNVl5fWW4pHBtd-fEmB4y-Ju5O0fZXTF6SSOC0kRwDiowtnuComoCuKPNd0BrmfXhXyqA77mZv031X4"/>
+<div class="absolute top-2 right-2 bg-secondary/10 backdrop-blur-sm px-2 py-1 rounded-full border border-secondary/20 flex items-center gap-1">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[14px]" data-icon="verified" data-weight="fill">verified</span>
+<span class="font-metadata text-[10px] text-secondary font-bold">APPROVED</span>
+</div>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Traveler's Notebook</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">The patina on this leather cover tells the story of three continents.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="bg-surface-variant text-on-surface-variant font-metadata text-[11px] px-2 py-1 rounded-sm">Stationery</span>
+<span class="font-metadata text-metadata text-primary opacity-70">Added Nov 02</span>
+</div>
+</article>
+<article class="bg-surface scrapbook-card p-3 rounded-md relative transform -rotate-2 hover:scale-[1.02] transition-transform duration-300 mt-4">
+<div class="aspect-auto w-full mb-3 overflow-hidden rounded border-2 border-white shadow-sm relative">
+<img class="w-full h-full object-cover" data-alt="A hand-thrown ceramic mug sitting on a wooden window sill, steaming lightly. The mug features an organic, speckled cream glaze with a subtle rim of terracotta. Outside the window, a blurred view of green foliage provides a natural backdrop. The lighting is soft and diffused, emphasizing the artisanal, slightly imperfect shape of the pottery in a warm, inviting light-mode composition." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAjzNj-bBHuIMgH5tnP40kCzmE__ew4tEzb5ZhYzuPnhmIVs-uW4_xM-EH3ZAIR4692LBaw03D6aK75rxsAx3o1C-uO4sEk_y-Ff2kmBlTdkXEEsfSOB8CjG8WYCJZu1e19HQesYBgrGpujBVgGsCX70jVcf3386VRc8IisGi8YtJ8cQIocBPs4dMjIzuASpulUS9maKxUEil-hdrsLceKcwsfzzGt3NQWZMdqShMELNn0LAvWEM8A0"/>
+<div class="absolute top-2 right-2 bg-secondary/10 backdrop-blur-sm px-2 py-1 rounded-full border border-secondary/20 flex items-center gap-1">
+<span aria-hidden="true" class="material-symbols-outlined text-secondary text-[14px]" data-icon="verified" data-weight="fill">verified</span>
+<span class="font-metadata text-[10px] text-secondary font-bold">APPROVED</span>
+</div>
+</div>
+<h3 class="font-h3 text-h3 text-on-surface mb-1">Speckled Ceramic Mug</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 line-clamp-2">Hand-thrown by a local artisan. The thick walls keep pour-overs warm for hours.</p>
+<div class="flex justify-between items-center mt-auto">
+<span class="bg-surface-variant text-on-surface-variant font-metadata text-[11px] px-2 py-1 rounded-sm">Homegoods</span>
+<span class="font-metadata text-metadata text-primary opacity-70">Added Nov 15</span>
+</div>
+</article>
+</div>
+</section>
+<section class="flex flex-col gap-md mt-lg">
+<div class="flex flex-col items-center text-center mb-sm">
+<span aria-hidden="true" class="material-symbols-outlined text-primary text-4xl mb-2" data-icon="auto_stories">auto_stories</span>
+<h2 class="font-h2 text-h2 text-primary">Memories of the Month</h2>
+<p class="font-body-md text-body-md text-on-surface-variant max-w-md mx-auto mt-2">Highlights from the archive, selected for their warmth and story.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg relative">
+<div class="absolute left-1/2 top-0 bottom-0 w-px border-l-2 border-dotted border-primary/30 hidden md:block" style="transform: translateX(-50%);"></div>
+<div class="bg-surface-container-lowest scrapbook-card p-4 rounded-xl flex flex-col md:flex-row gap-4 items-center relative z-10 md:mr-6">
+<div class="absolute right-0 top-1/2 w-6 h-px border-t-2 border-dotted border-primary/30 hidden md:block" style="transform: translateX(100%);"></div>
+<div class="w-full md:w-1/3 aspect-square rounded overflow-hidden border-2 border-surface-variant">
+<img class="w-full h-full object-cover" data-alt="A close-up shot of a vinyl record playing on a vintage wooden turntable. The grooves of the record catch the soft, warm light of a nearby lamp. The aesthetic is nostalgic and tactile, highlighting the organic texture of the wood veneer and the glossy surface of the vinyl in a comforting, light-mode setting." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCD2coGCSy8ux5Kfxin8ez_MKGlslQJEDoymF3B7PWKoawbEo5xHMT_nk9TVk9n0QIj9G1tKPS498sTQ_nXhLzpJkQGZo5_jSU7LFoAlLRibPa-BlUGZvdECujwzp12S_eF0RehNCu4hm7YhU1dMaFQIyVscoj9QeBwP-mi4cOBRcbHJwPOWxYoUX4aDIp6dD9PCKZgL4cW7Ffcvo7AiFJUks7WXlvGcm7pNwOwI9qiTYDE1T1Cna66"/>
+</div>
+<div class="w-full md:w-2/3 flex flex-col">
+<span class="font-metadata text-metadata text-secondary mb-1">OCTOBER 1998</span>
+<h3 class="font-h3 text-h3 text-on-surface mb-2">First Vinyl Purchase</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 text-sm">Found in a dusty bin at the back of a record store that no longer exists. Still plays perfectly.</p>
+<button class="self-start font-label text-label text-primary border border-primary px-4 py-1.5 rounded-md hover:bg-primary hover:text-on-primary transition-colors active:scale-97">Read Story</button>
+</div>
+</div>
+<div class="bg-surface-container-lowest scrapbook-card p-4 rounded-xl flex flex-col md:flex-row gap-4 items-center relative z-10 md:ml-6 md:mt-12">
+<div class="absolute left-0 top-1/2 w-6 h-px border-t-2 border-dotted border-primary/30 hidden md:block" style="transform: translateX(-100%);"></div>
+<div class="w-full md:w-1/3 aspect-square rounded overflow-hidden border-2 border-surface-variant md:order-last">
+<img class="w-full h-full object-cover" data-alt="A collection of dried pressed flowers arranged meticulously between the slightly yellowed pages of a heavy, vintage book. The lighting is soft and top-down, casting delicate shadows that emphasize the fragility of the petals and the textured grain of the old paper. The colors are muted organic greens, faded purples, and warm cream tones, evoking a strong sense of memory and preservation." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA7DvldfM7o9YFGsv6C4M437yqU9V7k7ZgosN9-sFeWS58ENuMDLGQwOHv0dPuj_oiwXupOQ9TKz6AhQqwBepfSu7rUq6bEX2l5shuZMhJ_fJnpPvg5em0qQ_4ufC9bKKl9OIARBxFHQJ3ovqxpDpVo-cFurfRoDPDnf6NOenoa-kaaqsPXLGyn0UT8lNPb4mF-1MNEO8-Jopl3NFM3FDK68d2O0w1z11sh919MPq7vpU6bL4vpLPdd"/>
+</div>
+<div class="w-full md:w-2/3 flex flex-col md:text-right">
+<span class="font-metadata text-metadata text-secondary mb-1">MAY 2012</span>
+<h3 class="font-h3 text-h3 text-on-surface mb-2">Pressed Botanicals</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4 text-sm">Collected during the spring hike through the northern trails. The colors have faded, but the memory hasn't.</p>
+<button class="self-start md:self-end font-label text-label text-primary border border-primary px-4 py-1.5 rounded-md hover:bg-primary hover:text-on-primary transition-colors active:scale-97">Read Story</button>
+</div>
+</div>
+</div>
+</section>
+</main>
+<nav class="md:hidden fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 py-3 pb-safe bg-surface dark:bg-inverse-surface border-t border-primary/10 shadow-lg rounded-t-xl">
+<button class="flex flex-col items-center justify-center bg-primary-container dark:bg-primary-fixed-variant text-on-primary-container dark:text-on-primary-fixed-variant rounded-full px-4 py-1 Active: scale-97 transition-transform duration-150">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]" data-icon="auto_stories">auto_stories</span>
+<span class="font-label text-[10px] mt-1 font-bold">Catalog</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 p-2 hover:bg-primary/5 rounded-full">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]" data-icon="timeline">timeline</span>
+<span class="font-label text-[10px] mt-1">Timeline</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 p-2 hover:bg-primary/5 rounded-full">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]" data-icon="favorite">favorite</span>
+<span class="font-label text-[10px] mt-1">Wishlist</span>
+</button>
+<button class="flex flex-col items-center justify-center text-on-surface-variant dark:text-on-surface-variant/70 p-2 hover:bg-primary/5 rounded-full">
+<span aria-hidden="true" class="material-symbols-outlined text-[24px]" data-icon="add_circle">add_circle</span>
+<span class="font-label text-[10px] mt-1">Add Item</span>
+</button>
+</nav>
+</body></html>

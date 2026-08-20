@@ -1,0 +1,148 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum UserRole {
+  ADMIN  @map("admin")
+  PARENT @map("parent")
+  KAFFA  @map("kaffa")
+}
+
+enum AcquisitionType {
+  BOUGHT       @map("bought")
+  GIFT         @map("gift")
+  HAND_ME_DOWN @map("hand_me_down")
+}
+
+enum ItemStatus {
+  ACTIVE   @map("active")
+  OUTGROWN @map("outgrown")
+  DONATED  @map("donated")
+  LOST     @map("lost")
+}
+
+enum ReviewerRole {
+  AYAH  @map("ayah")
+  IBU   @map("ibu")
+  KAFFA @map("kaffa")
+}
+
+enum WishlistPriority {
+  LOW    @map("low")
+  MEDIUM @map("medium")
+  HIGH   @map("high")
+}
+
+enum WishlistStatus {
+  WANTED    @map("wanted")
+  BOUGHT    @map("bought")
+  CANCELLED @map("cancelled")
+}
+
+model User {
+  id        String   @id @default(uuid()) @db.Uuid
+  email     String   @unique
+  fullName  String   @map("full_name")
+  role      UserRole @default(PARENT)
+  avatarUrl String?  @map("avatar_url")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  items         Item[]
+  reviews       Review[]
+  wishlistItems WishlistItem[]
+
+  @@map("users")
+}
+
+model Category {
+  id        String   @id @default(uuid()) @db.Uuid
+  name      String
+  slug      String   @unique
+  icon      String // Emoji or icon string
+  parentId  String?  @map("parent_id") @db.Uuid
+  sortOrder Int      @default(0) @map("sort_order")
+  createdAt DateTime @default(now()) @map("created_at")
+
+  parent        Category?      @relation("CategoryHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
+  children      Category[]     @relation("CategoryHierarchy")
+  items         Item[]
+  wishlistItems WishlistItem[]
+
+  @@map("categories")
+}
+
+model Item {
+  id              String          @id @default(uuid()) @db.Uuid
+  name            String
+  brand           String
+  categoryId      String          @map("category_id") @db.Uuid
+  subcategory     String?
+  description     String          @db.Text
+  photos          String[]
+  acquisitionType AcquisitionType @default(BOUGHT) @map("acquisition_type")
+  acquiredAt      DateTime        @map("acquired_at") @db.Date
+  acquiredPrice   Decimal?        @map("acquired_price") @db.Decimal(12, 2)
+  giftedBy        String?         @map("gifted_by")
+  purchaseUrl     String?         @map("purchase_url")
+  storeName       String?         @map("store_name")
+  kaffaAgeMonths  Int             @map("kaffa_age_months")
+  status          ItemStatus      @default(ACTIVE)
+  isRecommended   Boolean         @default(true) @map("is_recommended")
+  tags            String[]
+  createdBy       String          @map("created_by") @db.Uuid
+  createdAt       DateTime        @default(now()) @map("created_at")
+  updatedAt       DateTime        @updatedAt @map("updated_at")
+
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  user     User     @relation(fields: [createdBy], references: [id], onDelete: Cascade)
+  reviews  Review[]
+
+  @@map("items")
+}
+
+model Review {
+  id            String       @id @default(uuid()) @db.Uuid
+  itemId        String       @map("item_id") @db.Uuid
+  reviewerId    String       @map("reviewer_id") @db.Uuid
+  reviewerRole  ReviewerRole @map("reviewer_role")
+  rating        Int // 1 to 10
+  title         String?
+  body          String       @db.Text
+  pros          String?      @db.Text
+  cons          String?      @db.Text
+  wouldBuyAgain Boolean      @default(true) @map("would_buy_again")
+  usageDuration String?      @map("usage_duration")
+  createdAt     DateTime     @default(now()) @map("created_at")
+  updatedAt     DateTime     @updatedAt @map("updated_at")
+
+  item Item @relation(fields: [itemId], references: [id], onDelete: Cascade)
+  user User @relation(fields: [reviewerId], references: [id], onDelete: Cascade)
+
+  @@map("reviews")
+}
+
+model WishlistItem {
+  id             String           @id @default(uuid()) @db.Uuid
+  name           String
+  brand          String?
+  categoryId     String           @map("category_id") @db.Uuid
+  notes          String?          @db.Text
+  purchaseUrl    String?          @map("purchase_url")
+  estimatedPrice Decimal?         @map("estimated_price") @db.Decimal(12, 2)
+  priority       WishlistPriority @default(MEDIUM)
+  status         WishlistStatus   @default(WANTED)
+  addedBy        String           @map("added_by") @db.Uuid
+  createdAt      DateTime         @default(now()) @map("created_at")
+
+  category Category @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  user     User     @relation(fields: [addedBy], references: [id], onDelete: Cascade)
+
+  @@map("wishlist_items")
+}
