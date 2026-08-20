@@ -3,6 +3,7 @@
 import { cookies } from "next/headers";
 import { prisma } from "@/lib/prisma";
 import { User, UserRole } from "@/types";
+import bcrypt from "bcryptjs";
 
 const SESSION_COOKIE_NAME = "kaffa_auth_session";
 
@@ -39,21 +40,28 @@ export async function getSessionUser(): Promise<User | null> {
   }
 }
 
-export async function login(email: string): Promise<{ success: boolean; user?: User; error?: string }> {
+export async function login(
+  email: string,
+  password?: string
+): Promise<{ success: boolean; user?: User; error?: string }> {
   try {
-    let user = await prisma.user.findFirst({
-      where: { email: { equals: email, mode: "insensitive" } },
+    const trimmedEmail = email.trim();
+    const user = await prisma.user.findFirst({
+      where: { email: { equals: trimmedEmail, mode: "insensitive" } },
     });
 
-    // If not found by exact email, allow logging in as default admin (Ayah Refo)
     if (!user) {
-      user = await prisma.user.findFirst({
-        where: { role: "ADMIN" },
-      });
+      return { success: false, error: "Email akun tidak terdaftar." };
     }
 
-    if (!user) {
-      return { success: false, error: "User tidak ditemukan. Jalankan database seed terlebih dahulu." };
+    if (user.passwordHash) {
+      if (!password) {
+        return { success: false, error: "Silakan masukkan kata sandi." };
+      }
+      const isMatch = await bcrypt.compare(password, user.passwordHash);
+      if (!isMatch) {
+        return { success: false, error: "Kata sandi salah. Silakan periksa kembali." };
+      }
     }
 
     const sessionData = {
@@ -84,7 +92,7 @@ export async function login(email: string): Promise<{ success: boolean; user?: U
     };
   } catch (error: any) {
     console.error("Error login:", error);
-    return { success: false, error: error.message };
+    return { success: false, error: error.message || "Terjadi kesalahan sistem saat login." };
   }
 }
 

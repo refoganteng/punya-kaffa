@@ -10,7 +10,7 @@ interface AuthContextType {
   isAdmin: boolean;
   isParent: boolean;
   isGuest: boolean;
-  login: (email: string) => Promise<boolean>;
+  login: (email: string, password?: string) => Promise<{ success: boolean; error?: string }>;
   logout: () => Promise<void>;
 }
 
@@ -19,7 +19,7 @@ const AuthContext = React.createContext<AuthContextType>({
   isAdmin: false,
   isParent: false,
   isGuest: true,
-  login: async () => false,
+  login: async () => ({ success: false }),
   logout: async () => {},
 });
 
@@ -37,14 +37,14 @@ export function AuthProvider({
   const isParent = user?.role === "admin" || user?.role === "parent";
   const isGuest = !user;
 
-  const login = async (email: string) => {
-    const res = await loginAction(email);
+  const login = async (email: string, password?: string) => {
+    const res = await loginAction(email, password);
     if (res.success && res.user) {
       setUser(res.user);
       router.refresh();
-      return true;
+      return { success: true };
     }
-    return false;
+    return { success: false, error: res.error || "Gagal masuk." };
   };
 
   const logout = async () => {

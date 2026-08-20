@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/components/providers/AuthProvider";
-import { ShieldCheck, UserCheck, Lock, Key, ArrowLeft } from "lucide-react";
+import { Lock, Key, ArrowLeft, ShieldCheck, UserCheck } from "lucide-react";
 
 function LoginForm() {
   const router = useRouter();
@@ -21,7 +21,11 @@ function LoginForm() {
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email.trim()) {
-      setErrorMsg("Silakan masukkan email.");
+      setErrorMsg("Silakan masukkan email akun.");
+      return;
+    }
+    if (!password) {
+      setErrorMsg("Silakan masukkan kata sandi.");
       return;
     }
 
@@ -29,14 +33,14 @@ function LoginForm() {
     setErrorMsg("");
 
     try {
-      const success = await login(email);
-      if (success) {
+      const res = await login(email, password);
+      if (res.success) {
         router.push(redirectPath);
       } else {
-        setErrorMsg("Email tidak terdaftar.");
+        setErrorMsg(res.error || "Email atau kata sandi tidak valid.");
       }
     } catch (err: any) {
-      setErrorMsg(err.message || "Gagal masuk.");
+      setErrorMsg(err.message || "Gagal masuk ke akun.");
     } finally {
       setIsLoading(false);
     }
@@ -52,7 +56,7 @@ function LoginForm() {
           Login Admin & Keluarga
         </h1>
         <p className="text-xs text-foreground-muted">
-          Masuk untuk mengelola katalog barang, review, dan wishlist
+          Masuk untuk mengelola arsip barang, menulis review, dan wishlist
         </p>
       </div>
 
@@ -70,8 +74,8 @@ function LoginForm() {
           <input
             type="email"
             required
-            name="family_admin_email"
-            id="family_admin_email"
+            name="admin_login_email"
+            id="admin_login_email"
             autoComplete="off"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -86,12 +90,13 @@ function LoginForm() {
           </label>
           <input
             type="password"
-            name="family_admin_pin"
-            id="family_admin_pin"
+            required
+            name="admin_login_secret"
+            id="admin_login_secret"
             autoComplete="new-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder="Masukkan kata sandi apa saja"
+            placeholder="Masukkan kata sandi akun"
             className="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs focus:outline-none focus:ring-2 focus:ring-ring font-mono placeholder:text-foreground-subtle"
           />
         </div>
@@ -106,46 +111,50 @@ function LoginForm() {
         </button>
       </form>
 
-      {/* Clear Credential Info Box */}
+      {/* Credential Helper Box for Deployment */}
       <div className="p-4 rounded-2xl bg-surface-raised border border-border text-xs space-y-2.5">
         <div className="flex items-center gap-2 font-semibold text-foreground">
           <Key className="w-4 h-4 text-primary" />
-          <span>Daftar Akun yang Terdaftar di Database:</span>
+          <span>Kredensial Akun Keluarga:</span>
         </div>
 
-        <div className="space-y-1.5 font-mono text-[11px]">
-          <div className="flex items-center justify-between p-2 rounded-xl bg-background border border-border">
-            <div>
-              <span className="text-foreground-muted block text-[10px]">Ayah (Admin):</span>
-              <strong className="text-foreground">refo@punyakaffa.local</strong>
+        <div className="space-y-2 font-mono text-[11px]">
+          <div className="p-2.5 rounded-xl bg-background border border-border space-y-1">
+            <div className="flex items-center justify-between">
+              <span className="text-foreground-muted text-[10px] font-sans font-semibold">Ayah (Admin):</span>
+              <button
+                type="button"
+                onClick={() => {
+                  setEmail("refo@punyakaffa.local");
+                  setPassword("kaffa2024");
+                }}
+                className="text-[10px] text-primary hover:underline font-sans font-semibold px-2 py-0.5 bg-primary-subtle rounded-md cursor-pointer"
+              >
+                Pilih
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={() => setEmail("refo@punyakaffa.local")}
-              className="text-[10px] text-primary hover:underline font-sans font-semibold px-2 py-1 bg-primary-subtle rounded-md cursor-pointer"
-            >
-              Gunakan
-            </button>
+            <p className="text-foreground font-semibold">refo@punyakaffa.local</p>
+            <p className="text-[10px] text-foreground-muted">Password: <code className="text-primary font-bold">kaffa2024</code></p>
           </div>
 
-          <div className="flex items-center justify-between p-2 rounded-xl bg-background border border-border">
-            <div>
-              <span className="text-foreground-muted block text-[10px]">Ibu (Parent):</span>
-              <strong className="text-foreground">ibu@punyakaffa.local</strong>
+          <div className="p-2.5 rounded-xl bg-background border border-border space-y-1">
+            <div className="flex items-center justify-between">
+              <span className="text-foreground-muted text-[10px] font-sans font-semibold">Ibu (Parent):</span>
+              <button
+                type="button"
+                onClick={() => {
+                  setEmail("ibu@punyakaffa.local");
+                  setPassword("kaffa2024");
+                }}
+                className="text-[10px] text-primary hover:underline font-sans font-semibold px-2 py-0.5 bg-primary-subtle rounded-md cursor-pointer"
+              >
+                Pilih
+              </button>
             </div>
-            <button
-              type="button"
-              onClick={() => setEmail("ibu@punyakaffa.local")}
-              className="text-[10px] text-primary hover:underline font-sans font-semibold px-2 py-1 bg-primary-subtle rounded-md cursor-pointer"
-            >
-              Gunakan
-            </button>
+            <p className="text-foreground font-semibold">ibu@punyakaffa.local</p>
+            <p className="text-[10px] text-foreground-muted">Password: <code className="text-primary font-bold">kaffa2024</code></p>
           </div>
         </div>
-
-        <p className="text-[10px] text-foreground-muted leading-relaxed">
-          💡 <em>Password:</em> Bisa diisi kata sandi apa saja untuk testing login.
-        </p>
       </div>
 
       <div className="text-center pt-1">

@@ -11,16 +11,23 @@ const pool = new Pool({ connectionString });
 const adapter = new PrismaPg(pool);
 const prisma = new PrismaClient({ adapter });
 
+import bcrypt from "bcryptjs";
+
 async function main() {
   console.log("🌱 Starting seed...");
+
+  const defaultPasswordHash = await bcrypt.hash("kaffa2024", 10);
 
   // 1. Seed Users
   const ayah = await prisma.user.upsert({
     where: { email: "refo@punyakaffa.local" },
-    update: {},
+    update: {
+      passwordHash: defaultPasswordHash,
+    },
     create: {
       email: "refo@punyakaffa.local",
       fullName: "Refo (Ayah)",
+      passwordHash: defaultPasswordHash,
       role: UserRole.ADMIN,
       avatarUrl: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=200&q=80",
     },
@@ -28,10 +35,13 @@ async function main() {
 
   const ibu = await prisma.user.upsert({
     where: { email: "ibu@punyakaffa.local" },
-    update: {},
+    update: {
+      passwordHash: defaultPasswordHash,
+    },
     create: {
       email: "ibu@punyakaffa.local",
       fullName: "Ibu Kaffa",
+      passwordHash: defaultPasswordHash,
       role: UserRole.PARENT,
       avatarUrl: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=200&q=80",
     },
@@ -39,10 +49,13 @@ async function main() {
 
   const kaffa = await prisma.user.upsert({
     where: { email: "kaffa@punyakaffa.local" },
-    update: {},
+    update: {
+      passwordHash: defaultPasswordHash,
+    },
     create: {
       email: "kaffa@punyakaffa.local",
       fullName: "Kaffa",
+      passwordHash: defaultPasswordHash,
       role: UserRole.KAFFA,
       avatarUrl: "https://images.unsplash.com/photo-1519689680058-324335c77eba?auto=format&fit=crop&w=200&q=80",
     },
