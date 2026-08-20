@@ -93,7 +93,7 @@ export function ReviewFormModal({
                       : "bg-background text-foreground-muted border-border hover:bg-surface-raised"
                   }`}
                 >
-                  {r === "kaffa" ? "Kaffa ⭐" : r}
+                  {r === "kaffa" ? "Kaffa (Anak)" : r}
                 </button>
               ))}
             </div>

@@ -1,6 +1,7 @@
 import { getCategoriesWithCount } from "@/lib/actions/categories";
+import { CategoryIcon } from "@/components/ui/CategoryIcon";
 import Link from "next/link";
-import { ArrowRight, FolderTree } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 export const dynamic = "force-dynamic";
 
@@ -23,11 +24,11 @@ export default async function CategoriesPage() {
           <Link
             key={cat.id}
             href={`/catalog?category=${cat.id}`}
-            className="p-5 rounded-3xl bg-surface border border-border hover:border-primary/50 transition-all duration-200 flex items-center justify-between group shadow-xs hover:shadow-md"
+            className="p-5 rounded-2xl bg-surface border border-border hover:border-primary/50 transition-all duration-200 flex items-center justify-between group shadow-xs hover:shadow-md"
           >
             <div className="flex items-center gap-4">
-              <div className="w-14 h-14 rounded-2xl bg-surface-raised border border-border flex items-center justify-center text-3xl group-hover:scale-110 transition-transform">
-                {cat.icon}
+              <div className="w-12 h-12 rounded-xl bg-primary-subtle text-primary border border-primary/20 flex items-center justify-center group-hover:scale-105 transition-transform">
+                <CategoryIcon slug={cat.slug} name={cat.name} className="w-6 h-6" />
               </div>
               <div>
                 <h3 className="font-display font-bold text-base text-foreground group-hover:text-primary transition-colors">

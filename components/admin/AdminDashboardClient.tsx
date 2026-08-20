@@ -3,6 +3,7 @@
 import * as React from "react";
 import { User } from "@/types";
 import { formatRupiah } from "@/lib/utils";
+import { CategoryIcon } from "@/components/ui/CategoryIcon";
 import {
   ShieldCheck,
   Package,
@@ -120,10 +121,11 @@ export function AdminDashboardClient({ data }: AdminDashboardClientProps) {
               {data.categoryBreakdown.map((cat) => (
                 <div
                   key={cat.id}
-                  className="p-3 rounded-xl bg-background border border-border flex items-center justify-between"
+                  className="p-3.5 rounded-xl bg-background border border-border flex items-center justify-between"
                 >
-                  <span className="font-semibold text-foreground">
-                    {cat.icon} {cat.name}
+                  <span className="font-semibold text-foreground flex items-center gap-2">
+                    <CategoryIcon name={cat.name} className="w-4 h-4 text-primary" />
+                    <span>{cat.name}</span>
                   </span>
                   <span className="font-mono font-bold text-primary bg-primary-subtle px-2 py-0.5 rounded-md">
                     {cat.count} items

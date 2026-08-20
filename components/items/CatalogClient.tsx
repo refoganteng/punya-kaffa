@@ -83,6 +83,7 @@ export function CatalogClient({ initialItems, categories }: CatalogClientProps) 
 
       {/* Filter Component */}
       <ItemFilters
+        categories={categories}
         searchQuery={searchQuery}
         onSearchChange={setSearchQuery}
         selectedCategory={selectedCategory}

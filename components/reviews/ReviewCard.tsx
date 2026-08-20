@@ -21,7 +21,7 @@ export function ReviewCard({ review }: ReviewCardProps) {
   const roleLabels = {
     ayah: "Ayah",
     ibu: "Ibu",
-    kaffa: "Kaffa ⭐",
+    kaffa: "Kaffa",
   };
 
   return (

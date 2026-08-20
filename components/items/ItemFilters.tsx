@@ -1,11 +1,12 @@
 "use client";
 
-import { MOCK_CATEGORIES } from "@/lib/mock-data";
-import { AcquisitionType, ItemStatus } from "@/types";
+import { Category, AcquisitionType, ItemStatus } from "@/types";
+import { CategoryIcon } from "@/components/ui/CategoryIcon";
 import { Search, Filter, Sparkles, Check } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 interface ItemFiltersProps {
+  categories?: Category[];
   searchQuery: string;
   onSearchChange: (q: string) => void;
   selectedCategory: string;
@@ -17,6 +18,7 @@ interface ItemFiltersProps {
 }
 
 export function ItemFilters({
+  categories = [],
   searchQuery,
   onSearchChange,
   selectedCategory,
@@ -46,7 +48,7 @@ export function ItemFilters({
           type="button"
           onClick={() => onCategoryChange("all")}
           className={cn(
-            "px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all flex items-center gap-1.5 border",
+            "px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all flex items-center gap-1.5 border cursor-pointer",
             selectedCategory === "all"
               ? "bg-primary text-primary-foreground border-primary font-semibold shadow-xs"
               : "bg-background text-foreground-muted hover:text-foreground border-border hover:bg-surface-raised"
@@ -55,19 +57,19 @@ export function ItemFilters({
           <span>Semua Kategori</span>
         </button>
 
-        {MOCK_CATEGORIES.map((cat) => (
+        {categories.map((cat) => (
           <button
             key={cat.id}
             type="button"
             onClick={() => onCategoryChange(cat.id)}
             className={cn(
-              "px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all flex items-center gap-1.5 border",
+              "px-3.5 py-1.5 rounded-full text-xs font-medium whitespace-nowrap transition-all flex items-center gap-1.5 border cursor-pointer",
               selectedCategory === cat.id
                 ? "bg-primary text-primary-foreground border-primary font-semibold shadow-xs"
                 : "bg-background text-foreground-muted hover:text-foreground border-border hover:bg-surface-raised"
             )}
           >
-            <span>{cat.icon}</span>
+            <CategoryIcon slug={cat.slug} name={cat.name} className="w-3.5 h-3.5" />
             <span>{cat.name}</span>
           </button>
         ))}
@@ -103,7 +105,7 @@ export function ItemFilters({
               <option value="all">Semua</option>
               <option value="bought">Dibeli Sendiri</option>
               <option value="gift">Hadiah / Kado</option>
-              <option value="hand_me_down">Warisan / Thrifting</option>
+              <option value="hand_me_down">Warisan / Preloved</option>
             </select>
           </div>
         </div>

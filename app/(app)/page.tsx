@@ -3,6 +3,7 @@ import { getItems } from "@/lib/actions/items";
 import { getWishlistItems } from "@/lib/actions/wishlist";
 import { getCategoriesWithCount } from "@/lib/actions/categories";
 import { ItemCard } from "@/components/items/ItemCard";
+import { CategoryIcon } from "@/components/ui/CategoryIcon";
 import { formatRupiah } from "@/lib/utils";
 import {
   Package,
@@ -12,6 +13,7 @@ import {
   ArrowRight,
   PlusCircle,
   Star,
+  Award,
 } from "lucide-react";
 
 export const dynamic = "force-dynamic";
@@ -91,8 +93,8 @@ export default async function HomePage() {
         </div>
 
         <div className="p-4 rounded-2xl bg-surface border border-border flex items-center gap-3.5 shadow-xs">
-          <div className="w-11 h-11 rounded-xl bg-success-subtle text-success flex items-center justify-center shrink-0">
-            <Sparkles className="w-5 h-5 text-amber-500 fill-amber-400" />
+          <div className="w-11 h-11 rounded-xl bg-amber-500/10 text-amber-500 flex items-center justify-center shrink-0">
+            <Star className="w-5 h-5 fill-amber-400" />
           </div>
           <div>
             <p className="text-xs text-foreground-muted">Kaffa Approved</p>
@@ -170,8 +172,9 @@ export default async function HomePage() {
                 <Star className="w-4 h-4 fill-amber-400" />
               </div>
               <div>
-                <h2 className="font-display font-bold text-lg text-foreground">
-                  Kaffa Approved ⭐
+                <h2 className="font-display font-bold text-lg text-foreground flex items-center gap-1.5">
+                  <span>Kaffa Approved</span>
+                  <Award className="w-4 h-4 text-amber-500" />
                 </h2>
                 <p className="text-xs text-foreground-muted">
                   Barang favorit Kaffa yang mendapat rating tinggi dari Kaffa sendiri
@@ -216,11 +219,11 @@ export default async function HomePage() {
               <Link
                 key={cat.id}
                 href={`/catalog?category=${cat.id}`}
-                className="p-3 rounded-xl bg-background border border-border hover:border-primary/40 transition-colors flex items-center gap-3 group"
+                className="p-3.5 rounded-xl bg-background border border-border hover:border-primary/40 transition-colors flex items-center gap-3 group"
               >
-                <span className="text-2xl group-hover:scale-110 transition-transform">
-                  {cat.icon}
-                </span>
+                <div className="w-9 h-9 rounded-lg bg-primary-subtle text-primary border border-primary/20 flex items-center justify-center shrink-0 group-hover:scale-105 transition-transform">
+                  <CategoryIcon slug={cat.slug} name={cat.name} className="w-4 h-4" />
+                </div>
                 <div className="min-w-0">
                   <h4 className="text-xs font-semibold text-foreground group-hover:text-primary truncate">
                     {cat.name}
