@@ -17,7 +17,7 @@ export function MobileBottomNav() {
   const pathname = usePathname();
 
   return (
-    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-surface/95 backdrop-blur-lg border-t border-border px-3 py-2 pb-safe shadow-lg">
+    <div className="md:hidden fixed bottom-0 left-0 right-0 z-40 bg-surface/95 backdrop-blur-md border-t border-border/80 px-2 py-1.5 pb-safe shadow-lg">
       <nav className="flex items-center justify-around">
         {BOTTOM_TABS.map((tab) => {
           const Icon = tab.icon;
@@ -31,23 +31,25 @@ export function MobileBottomNav() {
               key={tab.href}
               href={tab.href}
               className={cn(
-                "flex flex-col items-center justify-center min-w-[56px] py-1 px-2 rounded-xl transition-all duration-200",
+                "flex flex-col items-center justify-center min-w-[54px] py-1 transition-all select-none relative",
                 isActive
-                  ? "text-primary font-bold scale-105"
-                  : "text-foreground-muted hover:text-foreground active:scale-95"
+                  ? "text-primary font-semibold"
+                  : "text-foreground-muted hover:text-foreground active:opacity-70 font-normal"
               )}
             >
-              <div
+              <Icon
                 className={cn(
-                  "p-1 rounded-xl transition-colors",
-                  isActive ? "bg-primary-subtle" : "bg-transparent"
+                  "w-5 h-5 transition-transform duration-150",
+                  isActive ? "scale-105" : "opacity-80"
                 )}
-              >
-                <Icon className={cn("w-5 h-5", isActive ? "text-primary" : "text-foreground-muted")} />
-              </div>
-              <span className="text-[10px] mt-0.5 tracking-tight font-medium leading-none">
+                strokeWidth={isActive ? 2.2 : 1.7}
+              />
+              <span className="text-[10px] mt-0.5 tracking-tight leading-none">
                 {tab.label}
               </span>
+              {isActive && (
+                <div className="w-1 h-1 rounded-full bg-primary mt-0.5" />
+              )}
             </Link>
           );
         })}
