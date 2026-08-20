@@ -62,7 +62,7 @@ function LoginForm() {
         </div>
       )}
 
-      <form onSubmit={handleLogin} className="space-y-4 text-xs">
+      <form onSubmit={handleLogin} autoComplete="off" className="space-y-4 text-xs">
         <div>
           <label className="block font-semibold text-foreground mb-1">
             Email Akun Keluarga
@@ -70,6 +70,9 @@ function LoginForm() {
           <input
             type="email"
             required
+            name="family_admin_email"
+            id="family_admin_email"
+            autoComplete="off"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             placeholder="e.g. refo@punyakaffa.local"
@@ -83,6 +86,9 @@ function LoginForm() {
           </label>
           <input
             type="password"
+            name="family_admin_pin"
+            id="family_admin_pin"
+            autoComplete="new-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             placeholder="Masukkan kata sandi apa saja"
