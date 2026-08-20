@@ -133,7 +133,7 @@ export default async function HomePage() {
               Barang Terbaru
             </h2>
             <p className="text-xs text-foreground-muted">
-              Barang yang baru saja ditambahkan ke database Supabase Kaffa
+              Barang yang baru saja ditambahkan ke koleksi katalog Kaffa
             </p>
           </div>
 

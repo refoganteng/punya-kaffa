@@ -94,7 +94,7 @@ export function AddItemClient({ categories }: AddItemClientProps) {
             Tambah Barang Kaffa
           </h1>
           <p className="text-xs text-foreground-muted">
-            Catat detail barang baru langsung ke database Supabase
+            Catat detail barang baru ke dalam katalog arsip Kaffa
           </p>
         </div>
       </div>

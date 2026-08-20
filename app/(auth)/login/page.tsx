@@ -33,7 +33,7 @@ function LoginForm() {
       if (success) {
         router.push(redirectPath);
       } else {
-        setErrorMsg("Email tidak ditemukan di database Supabase.");
+        setErrorMsg("Email tidak terdaftar.");
       }
     } catch (err: any) {
       setErrorMsg(err.message || "Gagal masuk.");

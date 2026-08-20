@@ -47,7 +47,7 @@ export function AdminDashboardClient({ data }: AdminDashboardClientProps) {
             <span>Panel Admin (Ayah Refo)</span>
           </h1>
           <p className="text-xs md:text-sm text-foreground-muted mt-1">
-            Konfigurasi sistem, statistik live database Supabase, manajemen user, dan ekspor data
+            Konfigurasi sistem, ringkasan statistik arsip, manajemen user, dan ekspor data
           </p>
         </div>
 
@@ -141,7 +141,7 @@ export function AdminDashboardClient({ data }: AdminDashboardClientProps) {
       {activeTab === "users" && (
         <div className="p-6 rounded-3xl bg-surface border border-border space-y-4 shadow-xs">
           <h3 className="font-display font-bold text-base text-foreground">
-            Daftar User & Akses Role (Database Supabase)
+            Daftar User & Akses Akun Keluarga
           </h3>
           <div className="space-y-2 text-xs">
             {data.users.map((user) => (
@@ -172,10 +172,10 @@ export function AdminDashboardClient({ data }: AdminDashboardClientProps) {
       {activeTab === "export" && (
         <div className="p-6 rounded-3xl bg-surface border border-border space-y-4 shadow-xs">
           <h3 className="font-display font-bold text-base text-foreground">
-            Export & Backup Data Database
+            Export & Backup Data Arsip
           </h3>
           <p className="text-xs text-foreground-muted">
-            Unduh seluruh arsip data Punya Kaffa langsung dari tabel Supabase dalam format JSON untuk cadangan offline.
+            Unduh seluruh arsip data Punya Kaffa dalam format JSON untuk cadangan offline.
           </p>
           <div className="pt-2 flex gap-3">
             <button
