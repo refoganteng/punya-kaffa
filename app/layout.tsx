@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Playfair_Display, JetBrains_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/providers/ThemeProvider";
+import { AuthProvider } from "@/components/providers/AuthProvider";
+import { getSessionUser } from "@/lib/actions/auth";
 import "./globals.css";
 
 const plusJakartaSans = Plus_Jakarta_Sans({
@@ -23,11 +25,13 @@ export const metadata: Metadata = {
   description: "Setiap barang punya cerita. Kaffa punya semuanya.",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const initialUser = await getSessionUser();
+
   return (
     <html lang="id" suppressHydrationWarning>
       <body
@@ -35,7 +39,9 @@ export default function RootLayout({
         className={`${plusJakartaSans.variable} ${playfairDisplay.variable} ${jetbrainsMono.variable} bg-background text-foreground font-sans antialiased min-h-screen flex flex-col`}
       >
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
+          <AuthProvider initialUser={initialUser}>
+            {children}
+          </AuthProvider>
         </ThemeProvider>
       </body>
     </html>

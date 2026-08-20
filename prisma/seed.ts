@@ -1,6 +1,15 @@
+import { config } from "dotenv";
+config({ path: ".env.local" });
+config({ path: ".env" });
+
+import { Pool } from "pg";
+import { PrismaPg } from "@prisma/adapter-pg";
 import { PrismaClient, UserRole, AcquisitionType, ItemStatus, ReviewerRole, WishlistPriority, WishlistStatus } from "@prisma/client";
 
-const prisma = new PrismaClient();
+const connectionString = process.env.DIRECT_URL || process.env.DATABASE_URL;
+const pool = new Pool({ connectionString });
+const adapter = new PrismaPg(pool);
+const prisma = new PrismaClient({ adapter });
 
 async function main() {
   console.log("🌱 Starting seed...");

@@ -1,80 +1,69 @@
-"use client";
-
-import * as React from "react";
-import { MOCK_REVIEWS, MOCK_ITEMS } from "@/lib/mock-data";
+import { getReviews } from "@/lib/actions/reviews";
 import { ReviewCard } from "@/components/reviews/ReviewCard";
-import { MessageSquare, Star } from "lucide-react";
+import { MessageSquare, Star, Sparkles } from "lucide-react";
 import Link from "next/link";
 
-export default function ReviewsFeedPage() {
-  const [selectedRole, setSelectedRole] = React.useState<string>("all");
+export const dynamic = "force-dynamic";
 
-  const filteredReviews = MOCK_REVIEWS.filter(
-    (r) => selectedRole === "all" || r.reviewer_role === selectedRole
-  );
+export default async function ReviewsFeedPage() {
+  const reviews = await getReviews();
 
   return (
-    <div className="space-y-6 max-w-4xl mx-auto">
+    <div className="space-y-6 max-w-5xl mx-auto">
       {/* Header */}
       <div className="border-b border-border pb-4 flex flex-wrap items-center justify-between gap-4">
         <div>
           <h1 className="font-display font-bold text-2xl md:text-3xl text-foreground flex items-center gap-2">
-            <MessageSquare className="w-7 h-7 text-primary" />
             <span>Feed Ulasan Keluarga</span>
+            <span className="text-xs px-2.5 py-0.5 rounded-full bg-primary-subtle text-primary font-mono font-bold">
+              {reviews.length} Ulasan
+            </span>
           </h1>
           <p className="text-xs md:text-sm text-foreground-muted mt-1">
-            Semua catatan ulasan jujur dari Ayah, Ibu, dan Kaffa
+            Catatan pengalaman jujur pemakaian barang Kaffa dari Ayah, Ibu, dan Kaffa
           </p>
         </div>
 
-        {/* Role Filter Pills */}
-        <div className="flex items-center gap-1.5 bg-surface border border-border p-1 rounded-2xl text-xs">
-          {[
-            { id: "all", label: "Semua" },
-            { id: "ayah", label: "Ayah" },
-            { id: "ibu", label: "Ibu" },
-            { id: "kaffa", label: "Kaffa ⭐" },
-          ].map((r) => (
-            <button
-              key={r.id}
-              type="button"
-              onClick={() => setSelectedRole(r.id)}
-              className={`px-3 py-1.5 rounded-xl font-semibold transition-all ${
-                selectedRole === r.id
-                  ? "bg-primary text-primary-foreground shadow-xs"
-                  : "text-foreground-muted hover:text-foreground"
-              }`}
-            >
-              {r.label}
-            </button>
-          ))}
-        </div>
+        <Link
+          href="/catalog"
+          className="px-4 py-2 rounded-xl bg-primary text-primary-foreground hover:bg-primary-hover text-xs font-semibold shadow-xs"
+        >
+          Tulis Ulasan di Katalog
+        </Link>
       </div>
 
-      {/* Reviews List */}
-      <div className="space-y-4">
-        {filteredReviews.map((rev) => {
-          const targetItem = MOCK_ITEMS.find((i) => i.id === rev.item_id);
-          return (
+      {/* Reviews Stream */}
+      {reviews.length > 0 ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {reviews.map((rev) => (
             <div key={rev.id} className="space-y-2">
-              {targetItem && (
-                <div className="flex items-center justify-between text-xs px-2">
+              {rev.item_name && (
+                <div className="flex items-center justify-between text-xs px-1">
                   <span className="text-foreground-muted">
-                    Ulasan untuk barang:{" "}
+                    Ulasan untuk:{" "}
                     <Link
-                      href={`/catalog/${targetItem.id}`}
-                      className="font-bold text-primary hover:underline"
+                      href={`/catalog/${rev.item_id}`}
+                      className="font-semibold text-primary hover:underline"
                     >
-                      {targetItem.name} ({targetItem.brand})
+                      {rev.item_name}
                     </Link>
                   </span>
+                  {rev.item_brand && (
+                    <span className="font-mono text-foreground-subtle text-[11px]">
+                      {rev.item_brand}
+                    </span>
+                  )}
                 </div>
               )}
               <ReviewCard review={rev} />
             </div>
-          );
-        })}
-      </div>
+          ))}
+        </div>
+      ) : (
+        <div className="py-16 text-center bg-surface rounded-3xl border border-border p-8 text-xs text-foreground-muted">
+          Belum ada ulasan yang tersimpan. Kunjungi halaman detail barang di katalog untuk menulis ulasan pertama!
+        </div>
+      )}
     </div>
   );
 }

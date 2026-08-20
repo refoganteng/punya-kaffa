@@ -1,5 +1,5 @@
-import { Sidebar } from "@/components/layout/Sidebar";
-import { Topbar } from "@/components/layout/Topbar";
+import { Navbar } from "@/components/layout/Navbar";
+import { MobileBottomNav } from "@/components/layout/MobileBottomNav";
 
 export default function AppLayout({
   children,
@@ -7,19 +7,17 @@ export default function AppLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-background flex flex-col md:flex-row">
-      {/* Desktop Sidebar */}
-      <div className="hidden md:block w-64 shrink-0 sticky top-0 h-screen">
-        <Sidebar />
-      </div>
+    <div className="min-h-screen bg-background flex flex-col selection:bg-primary-subtle">
+      {/* Top Navbar for Public & Family Users */}
+      <Navbar />
 
-      {/* Main Content Area */}
-      <div className="flex-1 flex flex-col min-w-0">
-        <Topbar />
-        <main className="flex-1 p-4 md:p-6 lg:p-8 max-w-7xl w-full mx-auto">
-          {children}
-        </main>
-      </div>
+      {/* Main Content Viewport with mobile bottom spacing */}
+      <main className="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 pb-24 md:pb-12">
+        {children}
+      </main>
+
+      {/* Mobile Sticky Bottom Navigation */}
+      <MobileBottomNav />
     </div>
   );
 }
