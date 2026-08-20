@@ -42,8 +42,8 @@ export function ItemFilters({
         />
       </div>
 
-      {/* Category Pills Slider */}
-      <div className="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+      {/* Category Pills (Wrap) */}
+      <div className="flex flex-wrap items-center gap-2">
         <button
           type="button"
           onClick={() => onCategoryChange("all")}
