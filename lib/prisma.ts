@@ -27,8 +27,10 @@ function getPrismaClient(): PrismaClient {
     const adapter = new PrismaPg(pool);
     return new PrismaClient({ adapter });
   } catch (err) {
-    console.error("Error creating PrismaPg adapter, falling back to default:", err);
-    return new PrismaClient();
+    throw new Error(
+      "Prisma client init failed: no database connection configured. Set DATABASE_URL or DIRECT_URL.",
+      { cause: err instanceof Error ? err : new Error(String(err)) }
+    );
   }
 }
 
