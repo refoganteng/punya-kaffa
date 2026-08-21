@@ -5,7 +5,7 @@ import { Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { useAuth } from "@/components/providers/AuthProvider";
-import { Lock, Key, ArrowLeft, ShieldCheck, UserCheck } from "lucide-react";
+import { Lock, ArrowLeft, ShieldCheck, UserCheck } from "lucide-react";
 
 function LoginForm() {
   const router = useRouter();
@@ -79,7 +79,7 @@ function LoginForm() {
             autoComplete="off"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder="e.g. refo@punyakaffa.local"
+            placeholder="name@example.com"
             className="w-full px-3.5 py-2.5 rounded-xl bg-background border border-border text-foreground text-xs focus:outline-none focus:ring-2 focus:ring-ring font-mono placeholder:text-foreground-subtle"
           />
         </div>
@@ -110,52 +110,6 @@ function LoginForm() {
           <span>{isLoading ? "Memproses..." : "Masuk ke Akun"}</span>
         </button>
       </form>
-
-      {/* Credential Helper Box for Deployment */}
-      <div className="p-4 rounded-2xl bg-surface-raised border border-border text-xs space-y-2.5">
-        <div className="flex items-center gap-2 font-semibold text-foreground">
-          <Key className="w-4 h-4 text-primary" />
-          <span>Kredensial Akun Keluarga:</span>
-        </div>
-
-        <div className="space-y-2 font-mono text-[11px]">
-          <div className="p-2.5 rounded-xl bg-background border border-border space-y-1">
-            <div className="flex items-center justify-between">
-              <span className="text-foreground-muted text-[10px] font-sans font-semibold">Ayah (Admin):</span>
-              <button
-                type="button"
-                onClick={() => {
-                  setEmail("refo@punyakaffa.local");
-                  setPassword("kaffa2024");
-                }}
-                className="text-[10px] text-primary hover:underline font-sans font-semibold px-2 py-0.5 bg-primary-subtle rounded-md cursor-pointer"
-              >
-                Pilih
-              </button>
-            </div>
-            <p className="text-foreground font-semibold">refo@punyakaffa.local</p>
-            <p className="text-[10px] text-foreground-muted">Password: <code className="text-primary font-bold">kaffa2024</code></p>
-          </div>
-
-          <div className="p-2.5 rounded-xl bg-background border border-border space-y-1">
-            <div className="flex items-center justify-between">
-              <span className="text-foreground-muted text-[10px] font-sans font-semibold">Ibu (Parent):</span>
-              <button
-                type="button"
-                onClick={() => {
-                  setEmail("ibu@punyakaffa.local");
-                  setPassword("kaffa2024");
-                }}
-                className="text-[10px] text-primary hover:underline font-sans font-semibold px-2 py-0.5 bg-primary-subtle rounded-md cursor-pointer"
-              >
-                Pilih
-              </button>
-            </div>
-            <p className="text-foreground font-semibold">ibu@punyakaffa.local</p>
-            <p className="text-[10px] text-foreground-muted">Password: <code className="text-primary font-bold">kaffa2024</code></p>
-          </div>
-        </div>
-      </div>
 
       <div className="text-center pt-1">
         <Link
